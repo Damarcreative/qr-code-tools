@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Tools</title>
+    <meta name="theme-color" content="#4cc9f0">
+    <meta name="description" content="Create and scan QR codes with ease.  Generate custom QR codes for URLs, text, and more.  Scan QR codes from your camera or uploaded images.">
+    <meta name="keywords" content="QR Code, QR, generator, scanner, create, scan, URL, text">
+    <meta name="author" content="Your Name or Organization">
+    
+    <!-- SVG Favicon -->
+    <link rel="icon" href="src/images/qr-code-outline-svgrepo-com_favicon-16.ico">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QR Code Tools</h1>
+            <p class="subtitle">Scan and Generate QR Codes with Ease</p>
+        </header>
+
+        <div class="app-container">
+            <!-- QR Scanner Section -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-qrcode card-icon"></i>
+                    <h2 class="card-title">QR Scanner</h2>
+                </div>
+
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="camera-tab">Camera</button>
+                    <button class="tab-btn" data-tab="upload-tab">Upload Image</button>
+                </div>
+
+                <div id="camera-tab" class="tab-content active">
+                    <div class="camera-container">
+                        <video id="video" playsinline></video>
+                        <canvas id="canvas" width="300" height="300"></canvas>
+                        <p id="camera-message" class="hidden">Camera is not available or access was denied.</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="start-btn" class="btn btn-success">
+                            <i class="fas fa-play"></i> Start Scanning
+                        </button>
+                        <button id="stop-btn" class="btn btn-warning hidden">
+                            <i class="fas fa-stop"></i> Stop Scanning
+                        </button>
+                    </div>
+                </div>
+
+                <div id="upload-tab" class="tab-content">
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Click to Upload QR Code Image</h3>
+                        <p>or drag and drop file here</p>
+                        <input type="file" id="file-input" accept="image/*">
+                    </div>
+                    <div class="preview-container" id="preview-container">
+                        <img id="preview-image" class="preview-image" src="" alt="Preview">
+                        <button class="delete-btn" id="delete-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-container" id="scan-result">
+                    <h3>Scan Result:</h3>
+                    <p id="scan-result-text">No QR code scanned yet.</p>
+                    <button id="copy-btn" class="btn btn-outline hidden">
+                        <i class="fas fa-copy"></i> Copy Text
+                    </button>
+                </div>
+            </div>
+
+            <!-- QR Generator Section -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-qrcode card-icon"></i>
+                    <h2 class="card-title">QR Generator</h2>
+                </div>
+
+                <textarea class="qr-input" id="qr-text" placeholder="Enter text or URL to generate QR code..." rows="4"></textarea>
+
+                <div class="qr-display" id="qr-code">
+                    <p style="text-align: center;">QR Code will appear here</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="generate-btn" class="btn btn-success btn-block">
+                        <i class="fas fa-qrcode"></i> Generate QR Code
+                    </button>
+                    <button id="download-btn" class="btn btn-outline btn-block hidden">
+                        <i class="fas fa-download"></i> Download QR Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>QR Code Tools &copy; 2023 | Made with <i class="fas fa-heart" style="color: var(--warning);"></i> DamarJati</p>
+        </footer>
+    </div>
+
+    <script src="src/js/script.js"></script>
+</body>
+</html>
